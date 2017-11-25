@@ -82,6 +82,12 @@ class AddTodo extends Component {
                 })
                 
             }
+            else{
+                todoList[i].completed=true
+                this.setState({
+                    todoList
+                })
+            }
         }
 
         /*Object.keys(todos).map(todo =>{
@@ -124,7 +130,7 @@ class AddTodo extends Component {
                     <label >Toogle All</label>
                     <input type="submit" onClick={(e)=>this.toogleAll(e)} />
                 </form>
-                <ViewTodo todoList={this.state.todoList} />
+                <ViewTodo todoList={this.state.todoList} deleteTodo={this.deleteTodo} />
             </div>
         );
     }
