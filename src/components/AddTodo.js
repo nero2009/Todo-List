@@ -7,7 +7,7 @@ class AddTodo extends Component {
     constructor(props){
         super(props)
         this.state ={
-            todo:{task:'',completed:false},todoList:[],completed:false,value:''
+            todo:{task:'',completed:false},todoList:[],completed:false,value:'',todoPosition:'',newTodo:''
         }
         this.completed=0
     }
@@ -33,6 +33,14 @@ class AddTodo extends Component {
         this.setState({value: e.target.value})
     }
 
+    handleChange2=(e)=>{
+        this.setState({todoPosition: e.target.value})
+    }
+
+    handleChange3=(e)=>{
+        this.setState({newTodo: e.target.value})
+    }
+
    deleteTodo=(event,position)=>{
        
        event.preventDefault();
@@ -40,6 +48,15 @@ class AddTodo extends Component {
         this.setState({
             value:''
         });
+   }
+
+   changeTodo=(event,position,todo) =>{
+        event.preventDefault();
+        let todo1 = this.state.todoList
+        todo1[position].task = 'todo'
+        this.setState({
+            todo1
+        })
    }
 
    toggleCompleted =(event,position)=>{
@@ -108,10 +125,10 @@ class AddTodo extends Component {
    
 
     render() {
-        const {value} = this.state;
+        const {value,todoPosition,newTodo} = this.state;
         
         return (
-            <div>
+            <div >
                 <form >
                     <label >Add Todo</label>
                     <input value={this.state.todo.task} name="todo" onChange={this.handleChange} type="text" /> 
@@ -121,6 +138,12 @@ class AddTodo extends Component {
                     <label >Delete Todo</label>
                     <input type="number" value={this.state.value} onChange={this.handleChange1} />
                     <input type="submit" onClick={(e)=>this.deleteTodo(e,value)} />
+                </form>
+                <form >
+                    <label >Change Todo</label>
+                    <input type="number" value={this.state.todoPosition} onChange={this.handleChange2} />
+                    <input type="text" value={this.state.newTodo} onChange={this.handleChange3} />
+                    <input type="submit" onClick={(e)=>this.changeTodo(e,todoPosition,newTodo)} />
                 </form>
                 <form >
                     <label >Toogle</label>
