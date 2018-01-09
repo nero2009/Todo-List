@@ -130,28 +130,38 @@ class AddTodo extends Component {
         return (
             <div >
                 <form >
+                  <div className="form-group">
                     <label >Add Todo</label>
                     <input value={this.state.todo.task} name="todo" onChange={this.handleChange} type="text" /> 
-                    <input type="submit" onClick={this.submit} />
+                    <input type="submit" className="btn btn-default" onClick={this.submit} />
+                  </div>
                 </form>
                 <form >
+                  <div className="form-group">
                     <label >Delete Todo</label>
                     <input type="number" value={this.state.value} onChange={this.handleChange1} />
-                    <input type="submit" onClick={(e)=>this.deleteTodo(e,value)} />
+                    <input type="submit" className="btn btn-default" onClick={(e)=>this.deleteTodo(e,value)} />
+                  </div>
                 </form>
                 <form >
+                  <div className="form-group">
                     <label >Change Todo</label>
                     <input type="number" value={this.state.todoPosition} onChange={this.handleChange2} />
                     <input type="text" value={this.state.newTodo} onChange={this.handleChange3} />
-                    <input type="submit" onClick={(e)=>this.changeTodo(e,todoPosition,newTodo)} />
+                    <input type="submit" className="btn btn-default" onClick={(e)=>this.changeTodo(e,todoPosition,newTodo)} />
+                  </div>
                 </form>
                 <form >
+                  <div className="form-group">
                     <label >Toogle</label>
                     <ToogleCompleted toogle={this.toggleCompleted}/>
+                  </div>
                 </form>
                 <form >
+                  <div className="form-group">
                     <label >Toogle All</label>
-                    <input type="submit" onClick={(e)=>this.toogleAll(e)} />
+                    <input type="submit" className="btn btn-default" onClick={(e)=>this.toogleAll(e)} />
+                  </div>
                 </form>
                 <ViewTodo todoList={this.state.todoList} deleteTodo={this.deleteTodo} />
             </div>
